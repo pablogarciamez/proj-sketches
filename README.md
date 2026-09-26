@@ -17,9 +17,9 @@ pip install -e .
 ## Usage
 
 ```python
-from proj_sketches import generate_data
+from proj_sketches import generate_test_data, add_element_to_counters, estimate_cardinality, create_table, add_element, estimate_frequency
 
-data = generate_data(1000, 100)
+data = generate_test_data(1000, 100)
 
 # HyperLogLog
 
@@ -43,6 +43,6 @@ print(estimate_frequency(table, element, d, w))
 ## Tests
 
 ```bash
-pip install -e "[dev]"
+pip install -e ".[dev]"
 pytest
 ```
