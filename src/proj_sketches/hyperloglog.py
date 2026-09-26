@@ -31,18 +31,3 @@ def estimate_cardinality(counters, p):
         V = sum(1 for c in counters if c == 0)
         return E if V == 0 else m * math.log(m / V)
     return E
-
-p = 14
-counters = [0] * (2 ** p)
-
-casos = [100, 1000, 5000, 20000, 50000, 200000]
-for K in casos:
-    N = K * 20
-    data = generate_test_data(N, K)
-    counters = [0] * (2**p)
-    for element in data:
-        add_element(counters, element, p)
-    real = calculate_cardinality(data)
-    estimado = estimate_cardinality(counters, p)
-    error_pct = 100 * abs(estimado - real) / real
-    print(K, real, round(estimado, 1), round(error_pct, 2))
