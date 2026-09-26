@@ -1,6 +1,6 @@
 import math
 import pytest
-from proj_sketches import generate_test_data, calculate_cardinality,hash_element, get_bucket_and_rank, add_element, estimate_cardinality
+from proj_sketches import generate_test_data, calculate_cardinality,hash_element, get_bucket_and_rank, add_element_to_counters, estimate_cardinality
 
 
 def test_hash_element_is_deterministic():
@@ -23,12 +23,12 @@ def test_add_element_keeps_max():
 
     # Case 1
     counters[cube_index] = valor_real - 1
-    add_element(counters, elemento, p_test)
+    add_element_to_counters(counters, elemento, p_test)
     assert counters[cube_index] == valor_real
 
     # Case 2
     counters[cube_index] = valor_real + 5
-    add_element(counters, elemento, p_test)
+    add_element_to_counters(counters, elemento, p_test)
     assert counters[cube_index] == valor_real + 5
 
 @pytest.mark.parametrize("K", [100, 1000, 5000, 20000, 50000, 200000])
@@ -38,7 +38,7 @@ def test_estimate_cardinality_error_within_bound(K):
     data = generate_test_data(N, K)
     counters = [0] * (2**p)
     for element in data:
-        add_element(counters, element, p)
+        add_element_to_counters(counters, element, p)
     real = calculate_cardinality(data)
     print(f"Real: {real}")
     estimated = estimate_cardinality(counters, p)

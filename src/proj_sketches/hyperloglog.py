@@ -18,7 +18,7 @@ def get_bucket_and_rank(hash_bits, p):
         zero_streak = len(hash_bits) - p
     return (cube_index, zero_streak)
 
-def add_element(counters, element, p):
+def add_element_to_counters(counters, element, p):
     cube_index, zero_streak = get_bucket_and_rank(hash_element(element), p)
     if counters[cube_index] < zero_streak + 1:
         counters[cube_index] = zero_streak + 1

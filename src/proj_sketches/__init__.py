@@ -1,1 +1,2 @@
-from .hyperloglog import generate_test_data, calculate_cardinality, hash_element, get_bucket_and_rank, add_element, estimate_cardinality
+from .hyperloglog import generate_test_data, calculate_cardinality, hash_element, get_bucket_and_rank, add_element_to_counters, estimate_cardinality
+from .count_min import get_columns, create_table, add_element, estimate_frequency
